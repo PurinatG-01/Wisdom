@@ -6,57 +6,104 @@
     android:layout_height="match_parent"
     tools:context=".SignupActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="366dp"
+        android:layout_height="732dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/signuplabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_marginBottom="40dp"
+            android:text="@string/signup"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/emailText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+        <EditText
+            android:id="@+id/confirmText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:ems="10"
+            android:hint="confirm password"
+            android:inputType="textPersonName"
+            android:textColor="@android:color/darker_gray"
+            android:textColorHighlight="@color/common_google_signin_btn_text_dark_pressed"
+            android:textColorLink="@color/common_google_signin_btn_text_dark_pressed"
+            app:layout_constraintBottom_toTopOf="@+id/signupButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/signup"
-                android:textAlignment="center" />
+        <Button
+            android:id="@+id/signupButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="136dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/signup"
+            android:textAllCaps="false"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <EditText
-                android:id="@+id/emailText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Email" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="93dp"
+            android:layout_height="92dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/logo2"
+            app:layout_constraintBottom_toTopOf="@+id/signuplabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.802" />
 
-            <EditText
-                android:id="@+id/passwordText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Password" />
+        <EditText
+            android:id="@+id/passwordText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:ems="10"
+            android:hint="password"
+            android:inputType="textPersonName"
+            android:textColor="@android:color/darker_gray"
+            android:textColorHighlight="@color/common_google_signin_btn_text_dark_pressed"
+            android:textColorLink="@color/common_google_signin_btn_text_dark_pressed"
+            app:layout_constraintBottom_toTopOf="@+id/confirmText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <EditText
-                android:id="@+id/confirmText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Confirm Password" />
+        <EditText
+            android:id="@+id/emailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:ems="10"
+            android:hint="email"
+            android:inputType="textPersonName"
+            android:textColor="@android:color/darker_gray"
+            android:textColorHighlight="@color/common_google_signin_btn_text_dark_pressed"
+            android:textColorLink="@color/common_google_signin_btn_text_dark_pressed"
+            app:layout_constraintBottom_toTopOf="@+id/passwordText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <Button
-                android:id="@+id/signupButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/signup" />
-        </LinearLayout>
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
