@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "905165770932",
+    "firebase_url": "https://wisdom-e4181.firebaseio.com",
+    "project_id": "wisdom-e4181",
+    "storage_bucket": "wisdom-e4181.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905165770932:android:85fba37649766ca4ff07e1",
+        "android_client_info": {
+          "package_name": "com.example.wisdom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905165770932-2t1dhd788knabgql4c8gt4feqj5dmh62.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wisdom",
+            "certificate_hash": "633e3611a6b22bd00bcf5240005c3053e6b1f08f"
+          }
+        },
+        {
+          "client_id": "905165770932-4ftkpi3ke1as826nvn96jibt8462bf2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5GVq2LBaboFnXJnux2Qbr6rnpg5z-3H0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905165770932-4ftkpi3ke1as826nvn96jibt8462bf2c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

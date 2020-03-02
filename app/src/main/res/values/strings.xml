@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Wisdom</string>
+    <string name="username">username</string>
+    <string name="logo">Logo Picture</string>
+    <string name="login">L o g i n</string>
+    <string name="signup">S i g n  U p</string>
+    <string name="Email">email</string>
+</resources>
