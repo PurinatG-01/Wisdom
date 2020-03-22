@@ -4,14 +4,23 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        // ...
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
     }
+
+
 
     fun goSignup(view : View){
         val intent = Intent(this, SignupActivity::class.java)
@@ -23,8 +32,22 @@ class LoginActivity : AppCompatActivity() {
         val email = emailText.text.toString()
         val password = passwordText.text.toString()
 
+
+
 //        Hold for authentication on firebase system
-        startActivity(Intent(this,MainActivity::class.java))
+
+        if(email != "" && password != ""){
+            auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){
+                    task ->
+                if(task.isSuccessful){
+                    errorText.text = ""
+                    startActivity(Intent(this,MainActivity::class.java))
+                }else{
+                    errorText.text = "Incorrect email or password"
+                }
+            }
+        }
+
 
     }
 }
