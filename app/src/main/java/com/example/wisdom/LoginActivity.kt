@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
         val email = emailText.text.toString()
         val password = passwordText.text.toString()
 
-
+        print("Login Method")
 
 //        Hold for authentication on firebase system
 
@@ -50,4 +50,7 @@ class LoginActivity : AppCompatActivity() {
 
 
     }
+
+
+
 }
