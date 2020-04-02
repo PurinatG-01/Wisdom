@@ -142,11 +142,6 @@
                             android:shadowColor="@color/common_google_signin_btn_text_light_focused"
                             android:text="Category 1"
                             android:textColor="@android:color/darker_gray" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
 
                         <Button
                             android:id="@+id/buttonC2"
@@ -156,6 +151,12 @@
                             android:shadowColor="@color/common_google_signin_btn_text_light_focused"
                             android:text="Category 2"
                             android:textColor="@android:color/darker_gray" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
                     </TableRow>
 
                     <TableRow
