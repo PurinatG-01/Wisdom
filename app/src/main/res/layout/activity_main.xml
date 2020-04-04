@@ -45,6 +45,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <HorizontalScrollView
+            android:id="@+id/horizontalLayout1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scrollbars="none"
@@ -56,11 +57,13 @@
             app:layout_constraintVertical_bias="0.0">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/linearHorizontal1"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <TableLayout
+                    android:id="@+id/tableLayout1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -71,30 +74,144 @@
                         android:paddingStart="70dp"
                         android:paddingEnd="100dp">
 
-                        <ImageButton
-                            android:id="@+id/eventCard1"
-                            android:layout_width="200dp"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="30dp"
-                            android:background="@drawable/bg"
-                            android:onClick="goEvent"
-                            app:srcCompat="@drawable/bg" />
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp">
 
-                        <ImageButton
-                            android:id="@+id/eventCard2"
-                            android:layout_width="200dp"
+                            <ImageButton
+                                android:id="@+id/eventCard1"
+                                android:layout_width="176dp"
+                                android:layout_height="333dp"
+                                android:background="@drawable/bg"
+                                android:onClick="goEvent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.0"
+                                app:srcCompat="@drawable/bg" />
+
+                            <TextView
+                                android:id="@+id/card1Donation"
+                                android:layout_width="134dp"
+                                android:layout_height="22dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginBottom="16dp"
+                                android:text="00.00"
+                                android:textColor="?attr/colorBackgroundFloating"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="@+id/eventCard1" />
+
+                            <TextView
+                                android:id="@+id/card1Name"
+                                android:layout_width="142dp"
+                                android:layout_height="21dp"
+                                android:text="@string/app_name"
+                                android:textColor="?attr/colorBackgroundFloating"
+                                app:layout_constraintBottom_toTopOf="@+id/card1Donation"
+                                app:layout_constraintEnd_toEndOf="@+id/eventCard1"
+                                app:layout_constraintHorizontal_bias="0.47"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="1.0" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="30dp"
-                            android:background="@drawable/bg"
-                            app:srcCompat="@drawable/bg" />
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp">
 
-                        <ImageButton
-                            android:id="@+id/eventCard3"
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="30dp"
-                            android:background="@drawable/bg"
-                            app:srcCompat="@drawable/bg" />
+                            <ImageButton
+                                android:id="@+id/eventCard2"
+                                android:layout_width="200dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bg"
+                                android:onClick="goEvent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.0"
+                                app:srcCompat="@drawable/bg" />
+
+                            <TextView
+                                android:id="@+id/card2Donation"
+                                android:layout_width="155dp"
+                                android:layout_height="21dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginBottom="16dp"
+                                android:text="00.00"
+                                android:textColor="?attr/colorBackgroundFloating"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="@+id/eventCard2" />
+
+                            <TextView
+                                android:id="@+id/card2Name"
+                                android:layout_width="166dp"
+                                android:layout_height="21dp"
+                                android:text="@string/app_name"
+                                android:textColor="?attr/colorBackgroundFloating"
+                                app:layout_constraintBottom_toTopOf="@+id/card2Donation"
+                                app:layout_constraintEnd_toEndOf="@+id/eventCard2"
+                                app:layout_constraintHorizontal_bias="0.47"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="1.0" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp">
+
+                            <ImageButton
+                                android:id="@+id/eventCard3"
+                                android:layout_width="200dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bg"
+                                android:onClick="goEvent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.0"
+                                app:srcCompat="@drawable/bg" />
+
+                            <TextView
+                                android:id="@+id/card3Donation"
+                                android:layout_width="155dp"
+                                android:layout_height="21dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginBottom="16dp"
+                                android:text="00.00"
+                                android:textColor="?attr/colorBackgroundFloating"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="@+id/eventCard3" />
+
+                            <TextView
+                                android:id="@+id/card3Name"
+                                android:layout_width="166dp"
+                                android:layout_height="21dp"
+                                android:text="@string/app_name"
+                                android:textColor="?attr/colorBackgroundFloating"
+                                app:layout_constraintBottom_toTopOf="@+id/card3Donation"
+                                app:layout_constraintEnd_toEndOf="@+id/eventCard3"
+                                app:layout_constraintHorizontal_bias="0.47"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="1.0" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
                     </TableRow>
 
                 </TableLayout>
@@ -139,24 +256,26 @@
                             android:layout_width="235dp"
                             android:layout_height="match_parent"
                             android:background="@color/common_google_signin_btn_text_dark_default"
+                            android:onClick="goCategory"
                             android:shadowColor="@color/common_google_signin_btn_text_light_focused"
                             android:text="Category 1"
                             android:textColor="@android:color/darker_gray" />
 
-                        <Button
-                            android:id="@+id/buttonC2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/common_google_signin_btn_text_dark_default"
-                            android:shadowColor="@color/common_google_signin_btn_text_light_focused"
-                            android:text="Category 2"
-                            android:textColor="@android:color/darker_gray" />
                     </TableRow>
 
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <Button
+                            android:id="@+id/buttonC2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/common_google_signin_btn_text_dark_default"
+                            android:onClick="goCategory"
+                            android:shadowColor="@color/common_google_signin_btn_text_light_focused"
+                            android:text="Category 2"
+                            android:textColor="@android:color/darker_gray" />
                     </TableRow>
 
                     <TableRow
@@ -168,6 +287,7 @@
                             android:layout_width="307dp"
                             android:layout_height="match_parent"
                             android:background="@color/common_google_signin_btn_text_dark_default"
+                            android:onClick="goCategory"
                             android:shadowColor="@color/common_google_signin_btn_text_light_focused"
                             android:text="Category 3"
                             android:textColor="@android:color/darker_gray" />
@@ -182,6 +302,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/common_google_signin_btn_text_dark_default"
+                            android:onClick="goCategory"
                             android:shadowColor="@color/common_google_signin_btn_text_light_focused"
                             android:text="Category 4"
                             android:textColor="@android:color/darker_gray" />
@@ -198,7 +319,8 @@
                             android:background="@color/common_google_signin_btn_text_dark_default"
                             android:shadowColor="@color/common_google_signin_btn_text_light_focused"
                             android:text="Category 5"
-                            android:textColor="@android:color/darker_gray" />
+                            android:textColor="@android:color/darker_gray"
+                            android:onClick="goCategory" />
                     </TableRow>
 
                     <TableRow
@@ -210,6 +332,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/common_google_signin_btn_text_dark_default"
+                            android:onClick="goCategory"
                             android:shadowColor="@color/common_google_signin_btn_text_light_focused"
                             android:text="Category 6"
                             android:textColor="@android:color/darker_gray" />
@@ -224,6 +347,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/common_google_signin_btn_text_dark_default"
+                            android:onClick="goCategory"
                             android:shadowColor="@color/common_google_signin_btn_text_light_focused"
                             android:text="Category 7"
                             android:textColor="@android:color/darker_gray" />
@@ -234,5 +358,17 @@
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/testView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.396"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.058" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

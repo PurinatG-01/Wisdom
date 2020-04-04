@@ -41,7 +41,9 @@ class LoginActivity : AppCompatActivity() {
                     task ->
                 if(task.isSuccessful){
                     errorText.text = ""
-                    startActivity(Intent(this,MainActivity::class.java))
+                    val intent = Intent(this@LoginActivity,MainActivity::class.java)
+                    intent.putExtra("email",email)
+                    startActivity(intent)
                 }else{
                     errorText.text = "Incorrect email or password"
                 }
