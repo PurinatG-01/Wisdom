@@ -30,19 +30,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
         database = Firebase.database.reference
         // Write a message to the database
-
-
         userEmail = intent.getStringExtra("email")
         testView.text = userEmail
-
-
         listCard = mutableListOf()
-
         setUI()
 
 
@@ -100,7 +92,15 @@ class MainActivity : AppCompatActivity() {
 
         val intent = Intent(this, EventActivity::class.java)
         val id = view.id
+
+        var eventId = "0";
+        when(view.id) {
+            R.id.eventCard1 -> {eventId = "0"}
+            R.id.eventCard2 -> {eventId = "1"}
+            R.id.eventCard3 -> {eventId = "2"}
+        }
         print("Hello go to the =>"+id+" Clicked!!")
+        intent.putExtra("id",eventId)
         startActivity(intent)
 
 
@@ -109,7 +109,19 @@ class MainActivity : AppCompatActivity() {
     fun goCategory(view : View){
 
         val intent = Intent(this, CategoryActivity::class.java)
+        val id = view.id
+
+        var categoryName = "";
+        when(view.id) {
+            R.id.buttonC1 -> {categoryName = "Technology"}
+            R.id.buttonC2 -> {categoryName = "Environment"}
+            R.id.buttonC3 -> {categoryName = "Festival"}
+            R.id.buttonC4 -> {categoryName = "Sport"}
+        }
+        print("Hello go to the =>"+id+" Clicked!!")
+        intent.putExtra("categoryName",categoryName)
         startActivity(intent)
+
 
     }
 

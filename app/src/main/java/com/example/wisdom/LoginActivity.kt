@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
 
         val email = emailText.text.toString()
         val password = passwordText.text.toString()
-
+        errorText.text = ""
         print("Login Method")
 
 //        Hold for authentication on firebase system

@@ -258,7 +258,7 @@
                             android:background="@color/common_google_signin_btn_text_dark_default"
                             android:onClick="goCategory"
                             android:shadowColor="@color/common_google_signin_btn_text_light_focused"
-                            android:text="Category 1"
+                            android:text="Technology"
                             android:textColor="@android:color/darker_gray" />
 
                     </TableRow>
@@ -274,7 +274,7 @@
                             android:background="@color/common_google_signin_btn_text_dark_default"
                             android:onClick="goCategory"
                             android:shadowColor="@color/common_google_signin_btn_text_light_focused"
-                            android:text="Category 2"
+                            android:text="Environment"
                             android:textColor="@android:color/darker_gray" />
                     </TableRow>
 
@@ -289,7 +289,7 @@
                             android:background="@color/common_google_signin_btn_text_dark_default"
                             android:onClick="goCategory"
                             android:shadowColor="@color/common_google_signin_btn_text_light_focused"
-                            android:text="Category 3"
+                            android:text="Festival"
                             android:textColor="@android:color/darker_gray" />
                     </TableRow>
 
@@ -304,52 +304,7 @@
                             android:background="@color/common_google_signin_btn_text_dark_default"
                             android:onClick="goCategory"
                             android:shadowColor="@color/common_google_signin_btn_text_light_focused"
-                            android:text="Category 4"
-                            android:textColor="@android:color/darker_gray" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <Button
-                            android:id="@+id/buttonC5"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/common_google_signin_btn_text_dark_default"
-                            android:shadowColor="@color/common_google_signin_btn_text_light_focused"
-                            android:text="Category 5"
-                            android:textColor="@android:color/darker_gray"
-                            android:onClick="goCategory" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <Button
-                            android:id="@+id/buttonC6"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/common_google_signin_btn_text_dark_default"
-                            android:onClick="goCategory"
-                            android:shadowColor="@color/common_google_signin_btn_text_light_focused"
-                            android:text="Category 6"
-                            android:textColor="@android:color/darker_gray" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <Button
-                            android:id="@+id/buttonC7"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/common_google_signin_btn_text_dark_default"
-                            android:onClick="goCategory"
-                            android:shadowColor="@color/common_google_signin_btn_text_light_focused"
-                            android:text="Category 7"
+                            android:text="Sport"
                             android:textColor="@android:color/darker_gray" />
                     </TableRow>
 

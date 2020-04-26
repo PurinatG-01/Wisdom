@@ -27,7 +27,7 @@
             app:srcCompat="@drawable/logo2" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/categoryNameView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="50dp"
@@ -36,19 +36,23 @@
             android:text="C a t e g o r y   N a m e"
             android:textAlignment="textStart"
             android:textAllCaps="false"
+            android:textColor="@color/white"
             android:textDirection="ltr"
             android:textIsSelectable="true"
             android:textSize="24sp" />
 
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/categoryDesciptionView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lineSpacingExtra="5dp"
             android:paddingStart="50dp"
             android:paddingBottom="15dp"
+            android:shadowColor="@color/white"
             android:text="This \tis \tthe \tdetail \tabout \tthe \taccording \n category"
+            android:textColor="@color/white"
+            android:textColorLink="@color/white"
             android:textSize="12sp" />
 
         <LinearLayout
@@ -85,150 +89,9 @@
                             android:orientation="vertical">
 
                             <TableLayout
+                                android:id="@+id/eventTable"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <TableRow
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/textView3"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="60dp"
-                                            android:layout_marginBottom="10dp"
-                                            android:text="E v e n t  N a m e"
-                                            android:textColor="@color/colorPrimary"
-                                            android:textSize="18sp" />
-
-                                        <TextView
-                                            android:id="@+id/textView11"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="This is about the details of the event" />
-                                    </LinearLayout>
-
-                                </TableRow>
-
-                                <TableRow
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/textView6"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="40dp"
-                                            android:layout_marginBottom="10dp"
-                                            android:text="E v e n t  N a m e"
-                                            android:textColor="@color/colorPrimary"
-                                            android:textSize="18sp" />
-
-                                        <TextView
-                                            android:id="@+id/textView12"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="This is about the details of the event" />
-                                    </LinearLayout>
-
-                                </TableRow>
-
-                                <TableRow
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/textView7"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="40dp"
-                                            android:layout_marginBottom="10dp"
-                                            android:text="E v e n t  N a m e"
-                                            android:textColor="@color/colorPrimary"
-                                            android:textSize="18sp" />
-
-                                        <TextView
-                                            android:id="@+id/textView13"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:text="This is about the details of the event" />
-                                    </LinearLayout>
-
-                                </TableRow>
-
-                                <TableRow
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/textView8"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="40dp"
-                                            android:layout_marginBottom="10dp"
-                                            android:text="E v e n t  N a m e"
-                                            android:textColor="@color/colorPrimary"
-                                            android:textSize="18sp" />
-
-                                        <TextView
-                                            android:id="@+id/textView14"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:text="This is about the details of the event" />
-                                    </LinearLayout>
-
-                                </TableRow>
-
-                                <TableRow
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:orientation="vertical">
-
-                                        <TextView
-                                            android:id="@+id/textView9"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="40dp"
-                                            android:layout_marginBottom="10dp"
-                                            android:text="E v e n t  N a m e"
-                                            android:textColor="@color/colorPrimary"
-                                            android:textSize="18sp" />
-
-                                        <TextView
-                                            android:id="@+id/textView15"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:text="This is about the details of the event" />
-                                    </LinearLayout>
-
-                                </TableRow>
-
-                            </TableLayout>
+                                android:layout_height="match_parent"/>
 
                         </LinearLayout>
                     </ScrollView>
