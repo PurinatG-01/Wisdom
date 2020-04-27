@@ -35,6 +35,7 @@ class CategoryActivity : AppCompatActivity() {
     }
 
     private fun setUI(context: Context){
+        eventTable.removeAllViews()
         categoryName = intent.getStringExtra("categoryName")
         categoryNameView.text = categoryName
         database.addValueEventListener(object: ValueEventListener {
