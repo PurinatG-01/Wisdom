@@ -31,7 +31,6 @@ class CategoryActivity : AppCompatActivity() {
         database = Firebase.database.reference
 
         setUI(this)
-//        var temp = TableRow(this)
 
     }
 
@@ -84,13 +83,7 @@ class CategoryActivity : AppCompatActivity() {
     fun goEvent(view : View){
 
         val intent = Intent(this, EventActivity::class.java)
-        val id = view.id
-
-        var x = view.getTag()
-
-
-
-        intent.putExtra("id",x.toString())
+        intent.putExtra("id",view.getTag().toString())
         startActivity(intent)
 
 
