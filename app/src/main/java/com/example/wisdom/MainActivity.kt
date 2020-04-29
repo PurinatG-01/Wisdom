@@ -54,11 +54,11 @@ class MainActivity : AppCompatActivity() {
 
                     card2Name.text = p0.child("event").child("1").child("event_name").getValue().toString()
                     card2Donation.text = p0.child("event").child("1").child("total_donation").getValue().toString()
-                    EventActivity.DownLoadImageTask(eventCard2).execute(p0.child("event").child("0").child("image_url").getValue().toString())
+                    EventActivity.DownLoadImageTask(eventCard2).execute(p0.child("event").child("1").child("image_url").getValue().toString())
 
                     card3Name.text = p0.child("event").child("2").child("event_name").getValue().toString()
                     card3Donation.text = p0.child("event").child("2").child("total_donation").getValue().toString()
-                    EventActivity.DownLoadImageTask(eventCard3).execute(p0.child("event").child("0").child("image_url").getValue().toString())
+                    EventActivity.DownLoadImageTask(eventCard3).execute(p0.child("event").child("2").child("image_url").getValue().toString())
 
 
                 }
