@@ -1,10 +1,39 @@
 <resources>
-    <string name="app_name">Wisdom</string>
-    <string name="username">username</string>
-    <string name="logo">Logo Picture</string>
-    <string name="login">L o g i n</string>
-    <string name="signup">S i g n  U p</string>
-    <string name="Email">email</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+<string name="app_name">Wisdom</string>
+<string name="username">username</string>
+<string name="logo" translatable="false">Logo Picture</string>
+<string name="login">L o g i n</string>
+<string name="signup">S i g n  U p</string>
+<string name="email">Email</string>
+<string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+<string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="password">Password</string>
+    <string name="signuphint">Confirm Password</string>
+    <string name="category">Category</string>
+    <string name="technology">Technology</string>
+    <string name="sport">Sport</string>
+    <string name="festival">Festival</string>
+    <string name="environment">Environment</string>
+    <string name="description">This is a description of an event</string>
+    <string name="donate">Donate</string>
+    <string name="goalbaht">Goal Baht</string>
+    <string name="currentbaht">Current Baht</string>
+    <string name="goal">Goal</string>
+    <string name="eventname">Event Name</string>
+    <string name="submitdonation">Submit Donation</string>
+    <string name="baht10000">10000 Baht</string>
+    <string name="baht5000">5000 Baht</string>
+    <string name="baht1000">1000 Baht</string>
+    <string name="baht100">100 Baht</string>
+    <string name="baht50">50 Baht</string>
+    <string name="baht500">500 Baht</string>
+    <string name="date">Date : XX / XX / XX</string>
+    <string name="donation1">Donation :</string>
+    <string name="donation2">Donatioin</string>
+    <string name="categoryname">C a t e g o r y N a m e</string>
+    <string name="detailcategory">This \\tis \\tthe \\tdetail \\tabout \\tthe \\taccording \\n category</string>
+    <string name="app_description">Online Crowdsourcing Platform</string>
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="logout">Logout</string>
 </resources>

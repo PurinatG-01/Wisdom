@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wisdom</string>
+    <string name="username">ชื่อผู่ใช้</string>
+    <string name="login">เข้าสู่ระบบ</string>
+    <string name="signup">ลงทะเบียน</string>
+    <string name="email">อีเมล</string>
+    <string name="password">รหัสผ่าน</string>
+    <string name="signuphint">ยินยันรหัสผ่าน</string>
+    <string name="category">หมวดหมู่</string>
+    <string name="technology">เทคโนโลยี</string>
+    <string name="sport">กีฬา</string>
+    <string name="festival">งานเทศกาล</string>
+    <string name="environment">สิ่งแวดล้อม</string>
+    <string name="description">นี่คือคำอธิบายของโครงการ</string>
+    <string name="donate">บริจาค</string>
+    <string name="goalbaht">จำนวนเงินเป้าหมาย</string>
+    <string name="currentbaht">"     จำนวนเงิน ณ ปัจจุบัน"</string>
+    <string name="goal">เป้าหมาย</string>
+    <string name="eventname">ชื่อกิจกรรม</string>
+    <string name="submitdonation">ยืนยันการบริจาค</string>
+    <string name="baht10000">10000 บาท</string>
+    <string name="baht5000">5000 บาท</string>
+    <string name="baht1000">1000 บาท</string>
+    <string name="baht100">100 บาท</string>
+    <string name="baht50">50 บาท</string>
+    <string name="baht500">500 บาท</string>
+    <string name="date">วันที่ :  XX / XX / XX</string>
+    <string name="donation1">เงินบริจาค :</string>
+    <string name="donation2">การบริจาค</string>
+    <string name="categoryname">ชื่อหมวดหมู่</string>
+    <string name="detailcategory">ข้อมูลเกี่ยวกับหมวดหมู่</string>
+    <string name="app_description">แพลตฟอร์มเพื่อการบริจาคออนไลน์</string>
+    <string name="home">หน้าแรก</string>
+    <string name="history">ประวัติการบริจาค</string>
+    <string name="logout">ออกจากระบบ</string>
+</resources>

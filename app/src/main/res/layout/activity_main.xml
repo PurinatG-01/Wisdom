@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:text="Category"
+            android:text="@string/category"
             android:textColor="@color/colorPrimary"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -297,7 +297,7 @@
                                 android:background="@color/common_google_signin_btn_text_dark_default"
                                 android:onClick="goCategory"
                                 android:shadowColor="@color/common_google_signin_btn_text_light_focused"
-                                android:text="Technology"
+                                android:text="@string/technology"
                                 android:textColor="@android:color/darker_gray" />
 
                         </TableRow>
@@ -313,7 +313,7 @@
                                 android:background="@color/common_google_signin_btn_text_dark_default"
                                 android:onClick="goCategory"
                                 android:shadowColor="@color/common_google_signin_btn_text_light_focused"
-                                android:text="Environment"
+                                android:text="@string/environment"
                                 android:textColor="@android:color/darker_gray" />
                         </TableRow>
 
@@ -328,7 +328,7 @@
                                 android:background="@color/common_google_signin_btn_text_dark_default"
                                 android:onClick="goCategory"
                                 android:shadowColor="@color/common_google_signin_btn_text_light_focused"
-                                android:text="Festival"
+                                android:text="@string/festival"
                                 android:textColor="@android:color/darker_gray" />
                         </TableRow>
 
@@ -343,7 +343,7 @@
                                 android:background="@color/common_google_signin_btn_text_dark_default"
                                 android:onClick="goCategory"
                                 android:shadowColor="@color/common_google_signin_btn_text_light_focused"
-                                android:text="Sport"
+                                android:text="@string/sport"
                                 android:textColor="@android:color/darker_gray" />
                         </TableRow>
 

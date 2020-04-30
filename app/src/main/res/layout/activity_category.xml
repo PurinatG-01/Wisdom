@@ -33,7 +33,7 @@
             android:paddingStart="50dp"
             android:paddingTop="30dp"
             android:paddingBottom="15dp"
-            android:text="C a t e g o r y   N a m e"
+            android:text="@string/categoryname"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -50,7 +50,7 @@
             android:paddingStart="50dp"
             android:paddingBottom="15dp"
             android:shadowColor="@color/white"
-            android:text="This \tis \tthe \tdetail \tabout \tthe \taccording \n category"
+            android:text="@string/detailcategory"
             android:textColor="@color/white"
             android:textColorLink="@color/white"
             android:textSize="12sp" />
