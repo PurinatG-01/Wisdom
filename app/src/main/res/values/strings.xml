@@ -5,4 +5,6 @@
     <string name="login">L o g i n</string>
     <string name="signup">S i g n  U p</string>
     <string name="Email">email</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
