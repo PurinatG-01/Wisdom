@@ -21,7 +21,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-
     fun goSignup(view : View){
         val intent = Intent(this, SignupActivity::class.java)
         startActivity(intent)

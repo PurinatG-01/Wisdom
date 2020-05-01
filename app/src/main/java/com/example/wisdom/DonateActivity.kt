@@ -38,26 +38,29 @@ class DonateActivity : AppCompatActivity() {
     }
 
 
-    private fun setUI(){
+    private fun setUI() {
         eventID = intent.getStringExtra("id")
-        database.addValueEventListener(object: ValueEventListener{
+        database.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {}
             override fun onDataChange(p0: DataSnapshot) {
-                if(p0.exists()){
-                    EventActivity.DownLoadImageTask(smallDisplayImageView).execute(p0.child("event").child(eventID).child("image_url").getValue().toString())
+                if (p0.exists()) {
+                    EventActivity.DownLoadImageTask(smallDisplayImageView).execute(
+                        p0.child("event").child(eventID).child("image_url").getValue().toString()
+                    )
 
-                    eventName = p0.child("event").child(eventID).child("event_name").getValue().toString()
+                    eventName =
+                        p0.child("event").child(eventID).child("event_name").getValue().toString()
                     eventNameView.text = eventName
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         val current = LocalDateTime.now()
                         val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-                        var answer: String =  current.format(formatter)
-                        dateView.text = "Date : "+answer
+                        var answer: String = current.format(formatter)
+                        dateView.text = "Date : " + answer
                     } else {
                         var date = Date();
                         val formatter = SimpleDateFormat("dd/MM/yyyy ")
                         val answer: String = formatter.format(date)
-                        dateView.text = "Date : "+answer
+                        dateView.text = "Date : " + answer
                     }
 
                 }
@@ -65,53 +68,92 @@ class DonateActivity : AppCompatActivity() {
         })
     }
 
-    fun selectAmount(view: View){
+    fun selectAmount(view: View) {
         var tag = view.getTag().toString().toInt()
         displaySelectedDonationView.text = tag.toString()
         selectDonation = tag.toString()
     }
 
-    fun submitDonation(view: View){
+    fun submitDonation(view: View) {
         val builder = AlertDialog.Builder(this)
+        if (Locale.getDefault().getLanguage() == "th") {
+            builder.setTitle("ยืนยันการบริจาค")
 
-        // Set the alert dialog title
-        builder.setTitle("Confirm Donation")
+            // Display a message on alert dialog
+            builder.setMessage("คุณต้องการยินยันการบริจาคหรือไม่")
 
-        // Display a message on alert dialog
-        builder.setMessage("Do you want to confirm the donation?")
-
-        // Set a positive button and its click listener on alert dialog
-        builder.setPositiveButton("YES"){dialog, which ->
-            var temp1: Int = 0;
-            var c = 0;
-            database.addValueEventListener(object: ValueEventListener{
-                override fun onCancelled(p0: DatabaseError) {}
-                override fun onDataChange(p0: DataSnapshot) {
-                    temp1 = p0.child("event").child(eventID).child("total_donation").getValue().toString().toInt()
-                    if(c==0){
-                        var value = temp1+selectDonation.toInt()
-                        database.child("event").child(eventID).child("total_donation").setValue(value.toString())
+            // Set a positive button and its click listener on alert dialog
+            builder.setPositiveButton("ยืนยัน") { dialog, which ->
+                var temp1: Int = 0;
+                var c = 0;
+                database.addValueEventListener(object : ValueEventListener {
+                    override fun onCancelled(p0: DatabaseError) {}
+                    override fun onDataChange(p0: DataSnapshot) {
+                        temp1 = p0.child("event").child(eventID).child("total_donation").getValue()
+                            .toString().toInt()
+                        if (c == 0) {
+                            var value = temp1 + selectDonation.toInt()
+                            database.child("event").child(eventID).child("total_donation")
+                                .setValue(value.toString())
+                        }
+                        c++
                     }
-                    c++
-                }
-            })
-            this.finish()
-            // Do something when user press the positive button
-            Toast.makeText(applicationContext,"Donation completed.",Toast.LENGTH_SHORT).show()
-            this.finish()
+                })
+                this.finish()
+                // Do something when user press the positive button
+                Toast.makeText(applicationContext, "บริจาคสำเร็จ", Toast.LENGTH_SHORT).show()
+                this.finish()
+            }
+
+            // Display a neutral button on alert dialog
+            builder.setNeutralButton("ยกเลิก") { _, _ ->
+            }
+
+            // Make the alert dialog using builder
+            val dialog: AlertDialog = builder.create()
+
+            // Display the alert dialog on app interface
+            dialog.show()
         }
+        if (Locale.getDefault().getLanguage() == "en"){
+            // Set the alert dialog title
+            builder.setTitle("Confirm Donation")
 
-        // Display a neutral button on alert dialog
-        builder.setNeutralButton("Cancel"){_,_ ->
+            // Display a message on alert dialog
+            builder.setMessage("Do you want to confirm the donation?")
+
+            // Set a positive button and its click listener on alert dialog
+            builder.setPositiveButton("YES") { dialog, which ->
+                var temp1: Int = 0;
+                var c = 0;
+                database.addValueEventListener(object : ValueEventListener {
+                    override fun onCancelled(p0: DatabaseError) {}
+                    override fun onDataChange(p0: DataSnapshot) {
+                        temp1 = p0.child("event").child(eventID).child("total_donation").getValue()
+                            .toString().toInt()
+                        if (c == 0) {
+                            var value = temp1 + selectDonation.toInt()
+                            database.child("event").child(eventID).child("total_donation")
+                                .setValue(value.toString())
+                        }
+                        c++
+                    }
+                })
+                this.finish()
+                // Do something when user press the positive button
+                Toast.makeText(applicationContext, "Donation completed.", Toast.LENGTH_SHORT).show()
+                this.finish()
+            }
+
+            // Display a neutral button on alert dialog
+            builder.setNeutralButton("Cancel") { _, _ ->
+            }
+
+            // Make the alert dialog using builder
+            val dialog: AlertDialog = builder.create()
+
+            // Display the alert dialog on app interface
+            dialog.show()
         }
-
-        // Make the alert dialog using builder
-        val dialog: AlertDialog = builder.create()
-
-        // Display the alert dialog on app interface
-        dialog.show()
     }
-
-
-
 }

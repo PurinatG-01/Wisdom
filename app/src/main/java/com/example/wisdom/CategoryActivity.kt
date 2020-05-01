@@ -63,7 +63,7 @@ class CategoryActivity : AppCompatActivity() {
 
                         eventName.layoutParams = param
                         eventName.setTextSize(18F)
-                        eventName.setTextColor(Color.parseColor("#93ffc3"))
+                        eventName.setTextColor(Color.parseColor("#2EA562"))
                         rowLinearView.addView(eventName)
                         rowLinearView.addView(eventDes)
 

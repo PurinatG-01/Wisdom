@@ -29,11 +29,13 @@
     <string name="baht500">500 Baht</string>
     <string name="date">Date : XX / XX / XX</string>
     <string name="donation1">Donation :</string>
-    <string name="donation2">Donatioin</string>
+    <string name="donation2">Donation</string>
     <string name="categoryname">C a t e g o r y N a m e</string>
     <string name="detailcategory">This \\tis \\tthe \\tdetail \\tabout \\tthe \\taccording \\n category</string>
     <string name="app_description">Online Crowdsourcing Platform</string>
     <string name="home">Home</string>
     <string name="history">History</string>
     <string name="logout">Logout</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
 </resources>
