@@ -17,11 +17,11 @@
             android:title="Logout"
             android:onClick="onClickLogout"
             />
-        <item
-            android:id="@+id/nav_change"
-            android:title="Change Language"
-            android:onClick="chageLanguage"
-            />
+<!--        <item-->
+<!--            android:id="@+id/nav_change"-->
+<!--            android:title="Change Language"-->
+<!--            android:onClick="chageLanguage"-->
+<!--            />-->
 
 
 

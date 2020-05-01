@@ -69,11 +69,11 @@ fun onClickLogout(item: MenuItem){
     startActivity(nextView)
 
 }
-    fun onClickCategory(item: MenuItem){
-        val nextView = Intent(this, CategoryActivity::class.java)
-        startActivity(nextView)
-
-    }
+//    fun onClickCategory(item: MenuItem){
+//        val nextView = Intent(this, CategoryActivity::class.java)
+//        startActivity(nextView)
+//
+//    }
     fun onClickHome(item: MenuItem) {
         val nextView = Intent(this, MainActivity::class.java)
         startActivity(nextView)
@@ -104,7 +104,7 @@ fun onClickLogout(item: MenuItem){
 //        editor.putString("My_Lang",Lang)
 //        editor.apply()
 //    }
-    
+
     private fun setUI() {
 
         database.addValueEventListener(object : ValueEventListener {
