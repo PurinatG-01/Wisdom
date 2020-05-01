@@ -2,16 +2,19 @@ package com.example.wisdom
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import android.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.os.ConfigurationCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
@@ -22,9 +25,9 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_event.*
 
-
 import kotlinx.android.synthetic.main.activity_main.*
 import java.net.URL
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
     lateinit var toolbar: androidx.appcompat.widget.Toolbar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,39 +51,60 @@ class MainActivity : AppCompatActivity() {
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav)
         toolbar = findViewById(R.id.toolbar)
-
         setSupportActionBar(toolbar)
-        val toggle: ActionBarDrawerToggle = object : ActionBarDrawerToggle(
-            this,
-            drawerLayout,
-            toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        ) {
-            override fun onDrawerClosed(view: View) {
-                super.onDrawerClosed(view)
-                //toast("Drawer closed")
-            }
+        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
 
-            override fun onDrawerOpened(drawerView: View) {
-                super.onDrawerOpened(drawerView)
-                //toast("Drawer opened")
-            }
-        }
+            drawerLayout.addDrawerListener(toggle)
+            toggle.syncState()
+            toggle.isDrawerIndicatorEnabled = true
+            supportActionBar?.setHomeButtonEnabled(true)
+            supportActionBar?.setDisplayShowTitleEnabled(false);
 
-//        toggle.isDrawerIndicatorEnabled = true
-        navView.bringToFront()
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-        toggle.isDrawerIndicatorEnabled = true
-        supportActionBar?.setHomeButtonEnabled(true)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp)
 
 
     }
 
+fun onClickLogout(item: MenuItem){
+    val nextView = Intent(this, LoginActivity::class.java)
+    startActivity(nextView)
 
+}
+    fun onClickCategory(item: MenuItem){
+        val nextView = Intent(this, CategoryActivity::class.java)
+        startActivity(nextView)
+
+    }
+    fun onClickHome(item: MenuItem) {
+        val nextView = Intent(this, MainActivity::class.java)
+        startActivity(nextView)
+    }
+
+//    fun changeLanguage(item: MenuItem) {
+//        val main = Intent(this, this::class.java)
+//        var chg = ""
+//        val lang = ConfigurationCompat.getLocales(resources.configuration)[0]
+//        if (lang.toString() =="en") {
+//            chg= "th"
+//        } else if (lang.toString()=="th"){
+//            chg = "en"
+//        } else {
+//            chg = ""
+//        }
+//        setLocate(chg)
+//        startActivities(main)
+//    }
+//
+//    private fun setLocate(Lang: String) {
+//        val locale = Locale(Lang)
+//        Locale.setDefault(locale)
+//        val config = Configuration()
+//        config.locale = locale
+//        baseContext.resources.updateConfiguration(config, basecontext.resources.displayMetrics)
+//        val editor = getSharedPreferences("Settings",Context.MODE_PRIVATE).edit()
+//        editor.putString("My_Lang",Lang)
+//        editor.apply()
+//    }
+    
     private fun setUI() {
 
         database.addValueEventListener(object : ValueEventListener {
@@ -165,6 +190,8 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
 
 
 }

@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+
 
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/home" />
+            android:title="@string/home"
+            android:onClick="onClickHome"/>
         <item
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_schedule_black_24dp"
             android:title="@string/history" />
+
         <item
             android:id="@+id/nav_logout"
-            android:title="@string/logout" />
+            android:title="Logout"
+            android:onClick="onClickLogout"
+            />
+        <item
+            android:id="@+id/nav_change"
+            android:title="Change Language"
+            android:onClick="chageLanguage"
+            />
 
-    </group>
+
 
 
 </menu>
