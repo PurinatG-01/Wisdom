@@ -55,11 +55,11 @@ class EventActivity : AppCompatActivity() {
                 eventName = p0.child("event").child(eventID).child("event_name").getValue().toString()
                 eventNameView.text = eventName
                 eventDescription = p0.child("event").child(eventID).child("description").getValue().toString()
-                if(eventDescription.length >= 110){
-                    eventDescriptionView.text = eventDescription.substring(0,110) + "..."
-                }else {
+//                if(eventDescription.length >= 110){
+//                    eventDescriptionView.text = eventDescription.substring(0,110) + "..."
+//                }else {
                     eventDescriptionView.text = eventDescription
-                }
+//                }
                 currentDonation = p0.child("event").child(eventID).child("total_donation").getValue().toString()
                 currentDonationView.text = currentDonation
                 goalDonation = p0.child("event").child(eventID).child("goal_donation").getValue().toString()
