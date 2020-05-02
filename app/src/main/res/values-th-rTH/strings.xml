@@ -34,4 +34,6 @@
     <string name="home">หน้าแรก</string>
     <string name="history">ประวัติการบริจาค</string>
     <string name="logout">ออกจากระบบ</string>
+    <string name="name">ชื่อ</string>
+    <string name="surname">นามสกุล</string>
 </resources>

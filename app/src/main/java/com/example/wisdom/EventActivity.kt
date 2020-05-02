@@ -91,7 +91,7 @@ class EventActivity : AppCompatActivity() {
             return try {
                 val inputStream = URL(urlOfImage).openStream()
                 BitmapFactory.decodeStream(inputStream)
-            } catch (e: Exception) { // Catch the download exception
+            } catch (e:Exception) { // Catch the download exception
                 e.printStackTrace()
                 null
             }

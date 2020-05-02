@@ -1,5 +1,6 @@
 package com.example.wisdom
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -47,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         // Write a message to the database
         userEmail = intent.getStringExtra("email")
         setUI()
-
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav)
         toolbar = findViewById(R.id.toolbar)
@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
 fun onClickLogout(item: MenuItem){
     val nextView = Intent(this, LoginActivity::class.java)
     startActivity(nextView)
@@ -79,31 +80,6 @@ fun onClickLogout(item: MenuItem){
         startActivity(nextView)
     }
 
-//    fun changeLanguage(item: MenuItem) {
-//        val main = Intent(this, this::class.java)
-//        var chg = ""
-//        val lang = ConfigurationCompat.getLocales(resources.configuration)[0]
-//        if (lang.toString() =="en") {
-//            chg= "th"
-//        } else if (lang.toString()=="th"){
-//            chg = "en"
-//        } else {
-//            chg = ""
-//        }
-//        setLocate(chg)
-//        startActivities(main)
-//    }
-//
-//    private fun setLocate(Lang: String) {
-//        val locale = Locale(Lang)
-//        Locale.setDefault(locale)
-//        val config = Configuration()
-//        config.locale = locale
-//        baseContext.resources.updateConfiguration(config, basecontext.resources.displayMetrics)
-//        val editor = getSharedPreferences("Settings",Context.MODE_PRIVATE).edit()
-//        editor.putString("My_Lang",Lang)
-//        editor.apply()
-//    }
 
     private fun setUI() {
 
