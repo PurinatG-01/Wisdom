@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var database: DatabaseReference
 
     private lateinit var userEmail: String
+    private lateinit var userID: String
+
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
     lateinit var toolbar: androidx.appcompat.widget.Toolbar
@@ -47,6 +49,9 @@ class MainActivity : AppCompatActivity() {
         database = Firebase.database.reference
         // Write a message to the database
         userEmail = intent.getStringExtra("email")
+
+
+
         setUI()
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav)
@@ -65,16 +70,12 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-fun onClickLogout(item: MenuItem){
-    val nextView = Intent(this, LoginActivity::class.java)
-    startActivity(nextView)
+    fun onClickLogout(item: MenuItem){
+        val nextView = Intent(this, LoginActivity::class.java)
+        startActivity(nextView)
 
-}
-//    fun onClickCategory(item: MenuItem){
-//        val nextView = Intent(this, CategoryActivity::class.java)
-//        startActivity(nextView)
-//
-//    }
+    }
+
     fun onClickHome(item: MenuItem) {
         val nextView = Intent(this, MainActivity::class.java)
         startActivity(nextView)
@@ -87,6 +88,17 @@ fun onClickLogout(item: MenuItem){
             override fun onCancelled(p0: DatabaseError) {}
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()) {
+
+//                  ==============================  User Setup ==============================
+                    for(user in p0.child("user").children){
+                        if(user.child("email").getValue().toString().equals(userEmail)){
+                            userID = user.key.toString()
+                            userNameView.text = user.child("name").getValue().toString()
+                            break;
+                        }
+                    }
+
+//                  ==============================  Event Setup ==============================
 
                     card1Name.text =
                         p0.child("event").child("0").child("event_name").getValue().toString()
@@ -136,6 +148,7 @@ fun onClickLogout(item: MenuItem){
             }
         }
         intent.putExtra("id", eventId)
+        intent.putExtra("userID",userID)
         startActivity(intent)
 
 
@@ -162,6 +175,7 @@ fun onClickLogout(item: MenuItem){
             }
         }
         intent.putExtra("categoryName", categoryName)
+        intent.putExtra("userID",userID)
         startActivity(intent)
 
 

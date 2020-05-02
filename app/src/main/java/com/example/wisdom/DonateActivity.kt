@@ -23,7 +23,7 @@ class DonateActivity : AppCompatActivity() {
 
     private lateinit var eventID: String
     private lateinit var eventName: String
-    private lateinit var selectDonation: String;
+    private lateinit var selectDonation: String
 
     @IgnoreExtraProperties
     data class donation(
@@ -79,6 +79,7 @@ class DonateActivity : AppCompatActivity() {
     }
 
     fun submitDonation(view: View) {
+        var userID = intent.getStringExtra("userID")
         val builder = AlertDialog.Builder(this)
         if (Locale.getDefault().getLanguage() == "th") {
             builder.setTitle("ยืนยันการบริจาค")
@@ -89,16 +90,19 @@ class DonateActivity : AppCompatActivity() {
             // Set a positive button and its click listener on alert dialog
             builder.setPositiveButton("ยืนยัน") { dialog, which ->
                 var temp1: Int = 0;
+                var temp2: Int = 0;
                 var c = 0;
                 database.addValueEventListener(object : ValueEventListener {
                     override fun onCancelled(p0: DatabaseError) {}
                     override fun onDataChange(p0: DataSnapshot) {
-                        temp1 = p0.child("event").child(eventID).child("total_donation").getValue()
-                            .toString().toInt()
+                        temp1 = p0.child("event").child(eventID).child("total_donation").getValue().toString().toInt()
+                        temp2 = p0.child("user").child(userID).child("total_donation").getValue().toString().toInt()
                         if (c == 0) {
                             var value = temp1 + selectDonation.toInt()
-                            database.child("event").child(eventID).child("total_donation")
-                                .setValue(value.toString())
+                            var value2 = temp2 + selectDonation.toInt()
+                            database.child("user").child(userID).child("list_event").push().setValue(donation(event_id=eventID,donation = selectDonation.toInt()))
+                            database.child("user").child(userID).child("total_donation").setValue(value2)
+                            database.child("event").child(eventID).child("total_donation").setValue(value.toString())
                         }
                         c++
                     }
@@ -137,12 +141,12 @@ class DonateActivity : AppCompatActivity() {
                     override fun onCancelled(p0: DatabaseError) {}
                     override fun onDataChange(p0: DataSnapshot) {
                         temp1 = p0.child("event").child(eventID).child("total_donation").getValue().toString().toInt()
-                        temp2 = p0.child("user").child("-M6I_MKvMcZcnrY2oV2t").child("total_donation").getValue().toString().toInt()
+                        temp2 = p0.child("user").child(userID).child("total_donation").getValue().toString().toInt()
                         if (c == 0) {
                             var value = temp1 + selectDonation.toInt()
                             var value2 = temp2 + selectDonation.toInt()
-                            database.child("user").child("-M6I_MKvMcZcnrY2oV2t").child("list_event").push().setValue(donation(event_id=eventID,donation = selectDonation.toInt()))
-                            database.child("user").child("-M6I_MKvMcZcnrY2oV2t").child("total_donation").setValue(value2)
+                            database.child("user").child(userID).child("list_event").push().setValue(donation(event_id=eventID,donation = selectDonation.toInt()))
+                            database.child("user").child(userID).child("total_donation").setValue(value2)
                             database.child("event").child(eventID).child("total_donation").setValue(value.toString())
                         }
                         c++

@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_category.*
 class CategoryActivity : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
-
+    private lateinit var userID: String
     private lateinit var categoryName : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +38,7 @@ class CategoryActivity : AppCompatActivity() {
         eventTable.removeAllViews()
         categoryName = intent.getStringExtra("categoryName")
         categoryNameView.text = categoryName
+        userID = intent.getStringExtra("userID")
         database.addValueEventListener(object: ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {}
             override fun onDataChange(p0: DataSnapshot) {
@@ -92,6 +93,7 @@ class CategoryActivity : AppCompatActivity() {
 
         val intent = Intent(this, EventActivity::class.java)
         intent.putExtra("id",view.getTag().toString())
+        intent.putExtra("userID",userID)
         startActivity(intent)
 
 

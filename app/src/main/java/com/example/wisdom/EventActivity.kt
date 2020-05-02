@@ -19,12 +19,15 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_event.*
+import kotlinx.android.synthetic.main.activity_profile.*
 import java.net.URL
 
 
 class EventActivity : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
+
+    private lateinit var userID: String
 
     private lateinit var eventID: String;
     private lateinit var eventName: String;
@@ -45,7 +48,7 @@ class EventActivity : AppCompatActivity() {
 
     private fun setUI(){
         eventID = intent.getStringExtra("id")
-
+        userID = intent.getStringExtra("userID")
         database.addValueEventListener(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {}
             override fun onDataChange(p0: DataSnapshot) {
@@ -63,15 +66,15 @@ class EventActivity : AppCompatActivity() {
                 goalDonationView.text = goalDonation
                 progressBarView.progress = ((currentDonation.toFloat()/ goalDonation.toFloat())*100.00).toInt()
                 if(goalDonation.toInt() <= currentDonation.toInt()) {
-                    donateButtonView.text = "COMPLETED"
+                    donateButtonView.text = getString(R.string.complete)
                 }
                 DownLoadImageTask(eventImageView)
                     .execute(p0.child("event").child(eventID).child("image_url").getValue().toString())
 
-
             }
 
         })
+
     }
 
     fun goDonate(view: View){
@@ -80,11 +83,13 @@ class EventActivity : AppCompatActivity() {
 
         if(goalDonation.toInt() > currentDonation.toInt()){
             intent.putExtra("id",this.eventID)
+            intent.putExtra("userID",userID)
             startActivity(intent)
         }
 
     }
 
+//  ============================== Image Setting Class ==============================
     public class DownLoadImageTask(internal val imageView: ImageView) : AsyncTask<String, Void, Bitmap?>() {
         override fun doInBackground(vararg urls: String): Bitmap? {
             val urlOfImage = urls[0]
