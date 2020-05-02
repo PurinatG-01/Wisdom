@@ -37,4 +37,6 @@
     <string name="name">ชื่อ</string>
     <string name="surname">นามสกุล</string>
     <string name="complete">บรรลุเป้าหมาย</string>
+    <string name="profile">บัญชีผู้ใช้</string>
+    <string name="totalDonation">ยอดบริจาครวม</string>
 </resources>

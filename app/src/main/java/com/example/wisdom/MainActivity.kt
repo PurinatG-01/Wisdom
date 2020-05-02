@@ -71,16 +71,22 @@ class MainActivity : AppCompatActivity() {
 
 
     fun onClickLogout(item: MenuItem){
-        val nextView = Intent(this, LoginActivity::class.java)
-        startActivity(nextView)
+        this.finish()
+    }
+
+    fun goProfile(item: MenuItem){
+
+        val intent = Intent(this, ProfileActivity::class.java)
+        intent.putExtra("userID",userID)
+        startActivity(intent)
 
     }
 
-    fun onClickHome(item: MenuItem) {
-        val nextView = Intent(this, MainActivity::class.java)
-        startActivity(nextView)
+    fun goHistory(item: MenuItem){
+        val intent = Intent(this, HistoryActivity::class.java)
+        intent.putExtra("userID",userID)
+        startActivity(intent)
     }
-
 
     private fun setUI() {
 
