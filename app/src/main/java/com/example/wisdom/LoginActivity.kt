@@ -43,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(this@LoginActivity,MainActivity::class.java)
                     intent.putExtra("email",email)
                     startActivity(intent)
+                    finish()
                 }else{
                     errorText.text = "Incorrect email or password"
                 }

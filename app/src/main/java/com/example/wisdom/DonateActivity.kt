@@ -7,10 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_donate.*
@@ -27,6 +24,13 @@ class DonateActivity : AppCompatActivity() {
     private lateinit var eventID: String
     private lateinit var eventName: String
     private lateinit var selectDonation: String;
+
+    @IgnoreExtraProperties
+    data class donation(
+        var event_id: String? = "",
+        var donation: Int? = 0
+
+    )
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,7 +103,6 @@ class DonateActivity : AppCompatActivity() {
                         c++
                     }
                 })
-                this.finish()
                 // Do something when user press the positive button
                 Toast.makeText(applicationContext, "บริจาคสำเร็จ", Toast.LENGTH_SHORT).show()
                 this.finish()
@@ -115,6 +118,9 @@ class DonateActivity : AppCompatActivity() {
             // Display the alert dialog on app interface
             dialog.show()
         }
+
+
+
         if (Locale.getDefault().getLanguage() == "en"){
             // Set the alert dialog title
             builder.setTitle("Confirm Donation")
@@ -125,21 +131,25 @@ class DonateActivity : AppCompatActivity() {
             // Set a positive button and its click listener on alert dialog
             builder.setPositiveButton("YES") { dialog, which ->
                 var temp1: Int = 0;
+                var temp2: Int = 0;
                 var c = 0;
                 database.addValueEventListener(object : ValueEventListener {
                     override fun onCancelled(p0: DatabaseError) {}
                     override fun onDataChange(p0: DataSnapshot) {
-                        temp1 = p0.child("event").child(eventID).child("total_donation").getValue()
-                            .toString().toInt()
+                        temp1 = p0.child("event").child(eventID).child("total_donation").getValue().toString().toInt()
+                        temp2 = p0.child("user").child("-M6I_MKvMcZcnrY2oV2t").child("total_donation").getValue().toString().toInt()
                         if (c == 0) {
                             var value = temp1 + selectDonation.toInt()
-                            database.child("event").child(eventID).child("total_donation")
-                                .setValue(value.toString())
+                            var value2 = temp2 + selectDonation.toInt()
+                            database.child("user").child("-M6I_MKvMcZcnrY2oV2t").child("list_event").push().setValue(donation(event_id=eventID,donation = selectDonation.toInt()))
+                            database.child("user").child("-M6I_MKvMcZcnrY2oV2t").child("total_donation").setValue(value2)
+                            database.child("event").child(eventID).child("total_donation").setValue(value.toString())
                         }
                         c++
                     }
                 })
-                this.finish()
+
+
                 // Do something when user press the positive button
                 Toast.makeText(applicationContext, "Donation completed.", Toast.LENGTH_SHORT).show()
                 this.finish()

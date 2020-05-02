@@ -41,7 +41,7 @@ class CategoryActivity : AppCompatActivity() {
         database.addValueEventListener(object: ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {}
             override fun onDataChange(p0: DataSnapshot) {
-
+                eventTable.removeAllViews()
                     categoryDesciptionView.text = p0.child("category").child(categoryName).child("c_description").getValue().toString()
                     var i = 0
                     for(event in p0.child("category").child(categoryName).child("c_events").children){
@@ -55,7 +55,14 @@ class CategoryActivity : AppCompatActivity() {
                         eventName.text = p0.child("event").child(tempEventID).child("event_name").getValue().toString()
 
                         val eventDes = TextView(context)
-                        eventDes.text = p0.child("event").child(tempEventID).child("description").getValue().toString()
+                        var eventDescription = p0.child("event").child(tempEventID).child("description").getValue().toString()
+
+                        if(eventDescription.length >= 25){
+                            eventDes.text = eventDescription.substring(0,25) + "..."
+                        }else {
+                            eventDes.text = eventDescription
+                        }
+
                         rowLinearView.orientation = LinearLayout.VERTICAL
 
                         var  param: RelativeLayout.LayoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,100);

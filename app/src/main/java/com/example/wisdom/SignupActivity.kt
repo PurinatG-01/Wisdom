@@ -88,7 +88,6 @@ class SignupActivity : AppCompatActivity() {
                 var firebaseDatabase = FirebaseDatabase.getInstance()
                 var user = User( email = emailText.text.toString(), name = nameSignup.text.toString(), surname = surnameSignup.text.toString() )
                 database.child("user").push().setValue(user)
-                startActivity(Intent(this,MainActivity::class.java))
                 finish()
             }
             else{

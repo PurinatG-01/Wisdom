@@ -46,19 +46,25 @@ class EventActivity : AppCompatActivity() {
     private fun setUI(){
         eventID = intent.getStringExtra("id")
 
-
         database.addValueEventListener(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {}
             override fun onDataChange(p0: DataSnapshot) {
                 eventName = p0.child("event").child(eventID).child("event_name").getValue().toString()
                 eventNameView.text = eventName
                 eventDescription = p0.child("event").child(eventID).child("description").getValue().toString()
-                eventDescriptionView.text = eventDescription
+                if(eventDescription.length >= 110){
+                    eventDescriptionView.text = eventDescription.substring(0,110) + "..."
+                }else {
+                    eventDescriptionView.text = eventDescription
+                }
                 currentDonation = p0.child("event").child(eventID).child("total_donation").getValue().toString()
                 currentDonationView.text = currentDonation
                 goalDonation = p0.child("event").child(eventID).child("goal_donation").getValue().toString()
                 goalDonationView.text = goalDonation
                 progressBarView.progress = ((currentDonation.toFloat()/ goalDonation.toFloat())*100.00).toInt()
+                if(goalDonation.toInt() <= currentDonation.toInt()) {
+                    donateButtonView.text = "COMPLETED"
+                }
                 DownLoadImageTask(eventImageView)
                     .execute(p0.child("event").child(eventID).child("image_url").getValue().toString())
 
@@ -72,8 +78,11 @@ class EventActivity : AppCompatActivity() {
         val intent = Intent(this, DonateActivity::class.java)
         val id = view.id
 
-        intent.putExtra("id",this.eventID)
-        startActivity(intent)
+        if(goalDonation.toInt() > currentDonation.toInt()){
+            intent.putExtra("id",this.eventID)
+            startActivity(intent)
+        }
+
     }
 
     public class DownLoadImageTask(internal val imageView: ImageView) : AsyncTask<String, Void, Bitmap?>() {
