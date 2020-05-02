@@ -9,28 +9,45 @@
 
     <Button
         android:id="@+id/mChangeLang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="57dp"
+        android:layout_width="64dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@color/white"
         android:text="ENG/TH"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/blueC"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout7"
-        android:layout_width="@dimen/containerWidth"
-        android:layout_height="@dimen/containerHeight"
+        android:layout_width="345dp"
+        android:layout_height="546dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.622">
+        app:layout_constraintVertical_bias="0.578">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="W i s d o m"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="117dp"
             android:layout_height="124dp"
+            android:layout_marginTop="28dp"
             android:background="@drawable/logo"
             android:contentDescription="@string/logo"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +59,7 @@
             android:id="@+id/emailText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="72dp"
             android:autofillHints=""
             android:backgroundTint="@android:color/background_light"
             android:ems="10"
@@ -118,8 +135,10 @@
             android:textColor="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@+id/emailText"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

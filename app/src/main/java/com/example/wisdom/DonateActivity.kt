@@ -74,96 +74,61 @@ class DonateActivity : AppCompatActivity() {
     fun submitDonation(view: View) {
         var userID = intent.getStringExtra("userID")
         val builder = AlertDialog.Builder(this)
-        if (Locale.getDefault().getLanguage() == "th") {
-            builder.setTitle("ยืนยันการบริจาค")
+        // Set the alert dialog title
+        builder.setTitle(getString(R.string.confirmdonation))
 
-            // Display a message on alert dialog
-            builder.setMessage("คุณต้องการยินยันการบริจาคหรือไม่")
+        // Display a message on alert dialog
+        builder.setMessage(getString(R.string.doyouwant))
 
-            // Set a positive button and its click listener on alert dialog
-            builder.setPositiveButton("ยืนยัน") { dialog, which ->
-                var temp1: Int = 0;
-                var temp2: Int = 0;
-                var c = 0;
-                database.addValueEventListener(object : ValueEventListener {
-                    override fun onCancelled(p0: DatabaseError) {}
-                    override fun onDataChange(p0: DataSnapshot) {
-                        temp1 = p0.child("event").child(eventID).child("total_donation").getValue().toString().toInt()
-                        temp2 = p0.child("user").child(userID).child("total_donation").getValue().toString().toInt()
-                        if (c == 0) {
-                            var value = temp1 + selectDonation.toInt()
-                            var value2 = temp2 + selectDonation.toInt()
-
-                            database.child("user").child(userID).child("list_event").push().setValue(donation(event_id=eventID,donation = selectDonation.toInt(),date = dateD))
-                            database.child("user").child(userID).child("total_donation").setValue(value2)
-                            database.child("event").child(eventID).child("total_donation").setValue(value.toString())
-                        }
-                        c++
+        // Set a positive button and its click listener on alert dialog
+        builder.setPositiveButton((R.string.yes)) { dialog, which ->
+            var temp1: Int = 0;
+            var temp2: Int = 0;
+            var c = 0;
+            database.addValueEventListener(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError) {}
+                override fun onDataChange(p0: DataSnapshot) {
+                    temp1 = p0.child("event").child(eventID).child("total_donation").getValue()
+                        .toString().toInt()
+                    temp2 =
+                        p0.child("user").child(userID).child("total_donation").getValue().toString()
+                            .toInt()
+                    if (c == 0) {
+                        var value = temp1 + selectDonation.toInt()
+                        var value2 = temp2 + selectDonation.toInt()
+                        database.child("user").child(userID).child("list_event").push().setValue(
+                            donation(
+                                event_id = eventID,
+                                donation = selectDonation.toInt(),
+                                date = dateD
+                            )
+                        )
+                        database.child("user").child(userID).child("total_donation")
+                            .setValue(value2)
+                        database.child("event").child(eventID).child("total_donation")
+                            .setValue(value.toString())
                     }
-                })
-                // Do something when user press the positive button
-                Toast.makeText(applicationContext, "บริจาคสำเร็จ", Toast.LENGTH_SHORT).show()
-                this.finish()
-            }
+                    c++
+                }
+            })
 
-            // Display a neutral button on alert dialog
-            builder.setNeutralButton("ยกเลิก") { _, _ ->
-            }
 
-            // Make the alert dialog using builder
-            val dialog: AlertDialog = builder.create()
-
-            // Display the alert dialog on app interface
-            dialog.show()
+            // Do something when user press the positive button
+            Toast.makeText(applicationContext, R.string.donationcomplete, Toast.LENGTH_SHORT).show()
+            this.finish()
         }
 
-
-
-        if (Locale.getDefault().getLanguage() == "en"){
-            // Set the alert dialog title
-            builder.setTitle("Confirm Donation")
-
-            // Display a message on alert dialog
-            builder.setMessage("Do you want to confirm the donation?")
-
-            // Set a positive button and its click listener on alert dialog
-            builder.setPositiveButton("YES") { dialog, which ->
-                var temp1: Int = 0;
-                var temp2: Int = 0;
-                var c = 0;
-                database.addValueEventListener(object : ValueEventListener {
-                    override fun onCancelled(p0: DatabaseError) {}
-                    override fun onDataChange(p0: DataSnapshot) {
-                        temp1 = p0.child("event").child(eventID).child("total_donation").getValue().toString().toInt()
-                        temp2 = p0.child("user").child(userID).child("total_donation").getValue().toString().toInt()
-                        if (c == 0) {
-                            var value = temp1 + selectDonation.toInt()
-                            var value2 = temp2 + selectDonation.toInt()
-                            database.child("user").child(userID).child("list_event").push().setValue(donation(event_id=eventID,donation = selectDonation.toInt(),date = dateD))
-                            database.child("user").child(userID).child("total_donation").setValue(value2)
-                            database.child("event").child(eventID).child("total_donation").setValue(value.toString())
-                        }
-                        c++
-                    }
-                })
-
-
-                // Do something when user press the positive button
-                Toast.makeText(applicationContext, "Donation completed.", Toast.LENGTH_SHORT).show()
-                this.finish()
-            }
-
-            // Display a neutral button on alert dialog
-            builder.setNeutralButton("Cancel") { _, _ ->
-            }
-
-            // Make the alert dialog using builder
-            val dialog: AlertDialog = builder.create()
-
-            // Display the alert dialog on app interface
-            dialog.show()
+        // Display a neutral button on alert dialog
+        builder.setNeutralButton(R.string.donationcancel) { _, _ ->
         }
+
+        // Make the alert dialog using builder
+        val dialog: AlertDialog = builder.create()
+
+        // Display the alert dialog on app interface
+        dialog.show()
     }
+
 
     private fun getDate(): String {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -178,3 +143,4 @@ class DonateActivity : AppCompatActivity() {
         }
     }
 }
+

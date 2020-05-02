@@ -42,4 +42,9 @@
     <string name="donated">บริจาค</string>
     <string name="donated_times">ครั้ง</string>
     <string name="baht">บาท</string>
+    <string name="confirmdonation">ยืนยันการบริจาค</string>
+    <string name="doyouwant">คุณต้องการยืนยันการบริจาคหรือไม่</string>
+    <string name="yes">ยืนยัน</string>
+    <string name="donationcomplete">บริจาคเสร็จสิ้น</string>
+    <string name="donationcancel">ยกเลิก</string>
 </resources>

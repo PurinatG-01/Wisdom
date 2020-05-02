@@ -187,7 +187,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
+    fun goProfile(view: View) {}
 
 
 }

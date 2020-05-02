@@ -44,5 +44,10 @@
     <string name="donated">Donated</string>
     <string name="donated_times">times</string>
     <string name="baht">Baht</string>
+    <string name="confirmdonation">Confirm Donation</string>
+    <string name="doyouwant">Do you want to confirm the donation?</string>
+    <string name="yes">YES</string>
+    <string name="donationcomplete">Donation completed.</string>
+    <string name="donationcancel">Cancel</string>
 
 </resources>

@@ -20,11 +20,10 @@
             android:layout_marginTop="92dp"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/ic_person_black_24dp" />
+            app:layout_constraintVertical_bias="0.203"
+            app:srcCompat="@drawable/baseline_account_circle_white_48" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout6"
@@ -40,14 +39,13 @@
                 android:id="@+id/emailView"
                 android:layout_width="263dp"
                 android:layout_height="41dp"
-                android:layout_marginBottom="68dp"
+                android:layout_marginBottom="48dp"
                 android:text="@string/email"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="23sp"
                 app:layout_constraintBottom_toTopOf="@+id/textView2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
@@ -62,13 +60,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.597" />
+                app:layout_constraintVertical_bias="0.581" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="24dp"
                 android:text="@string/totalDonation"
                 android:textAlignment="center"
                 android:textColor="@color/Transparent"
@@ -82,12 +80,14 @@
                 android:id="@+id/userTotalDonationView"
                 android:layout_width="252dp"
                 android:layout_height="59dp"
+                android:layout_marginBottom="24dp"
                 android:text="0"
                 android:textAlignment="center"
                 android:textColor="@color/Transparent"
                 android:textSize="34sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
