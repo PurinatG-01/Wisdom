@@ -41,5 +41,8 @@
     <string name="complete">Completed</string>
     <string name="profile">Profile</string>
     <string name="totalDonation">Total Donation</string>
+    <string name="donated">Donated</string>
+    <string name="donated_times">times</string>
+    <string name="baht">Baht</string>
 
 </resources>

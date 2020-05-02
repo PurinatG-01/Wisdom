@@ -1,6 +1,5 @@
 package com.example.wisdom
 
-import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -24,11 +23,13 @@ class DonateActivity : AppCompatActivity() {
     private lateinit var eventID: String
     private lateinit var eventName: String
     private lateinit var selectDonation: String
+    private lateinit var dateD: String
 
     @IgnoreExtraProperties
     data class donation(
         var event_id: String? = "",
-        var donation: Int? = 0
+        var donation: Int? = 0,
+        var date: String? = "XX/XX/XX"
 
     )
 
@@ -37,7 +38,7 @@ class DonateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate)
         database = Firebase.database.reference
-
+        dateD = getDate()
         setUI()
     }
 
@@ -55,21 +56,13 @@ class DonateActivity : AppCompatActivity() {
                     eventName =
                         p0.child("event").child(eventID).child("event_name").getValue().toString()
                     eventNameView.text = eventName
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        val current = LocalDateTime.now()
-                        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-                        var answer: String = current.format(formatter)
-                        dateView.text = "Date : " + answer
-                    } else {
-                        var date = Date();
-                        val formatter = SimpleDateFormat("dd/MM/yyyy ")
-                        val answer: String = formatter.format(date)
-                        dateView.text = "Date : " + answer
-                    }
+
+                    dateView.text = dateD
 
                 }
             }
         })
+
     }
 
     fun selectAmount(view: View) {
@@ -100,7 +93,8 @@ class DonateActivity : AppCompatActivity() {
                         if (c == 0) {
                             var value = temp1 + selectDonation.toInt()
                             var value2 = temp2 + selectDonation.toInt()
-                            database.child("user").child(userID).child("list_event").push().setValue(donation(event_id=eventID,donation = selectDonation.toInt()))
+
+                            database.child("user").child(userID).child("list_event").push().setValue(donation(event_id=eventID,donation = selectDonation.toInt(),date = dateD))
                             database.child("user").child(userID).child("total_donation").setValue(value2)
                             database.child("event").child(eventID).child("total_donation").setValue(value.toString())
                         }
@@ -145,7 +139,7 @@ class DonateActivity : AppCompatActivity() {
                         if (c == 0) {
                             var value = temp1 + selectDonation.toInt()
                             var value2 = temp2 + selectDonation.toInt()
-                            database.child("user").child(userID).child("list_event").push().setValue(donation(event_id=eventID,donation = selectDonation.toInt()))
+                            database.child("user").child(userID).child("list_event").push().setValue(donation(event_id=eventID,donation = selectDonation.toInt(),date = dateD))
                             database.child("user").child(userID).child("total_donation").setValue(value2)
                             database.child("event").child(eventID).child("total_donation").setValue(value.toString())
                         }
@@ -168,6 +162,19 @@ class DonateActivity : AppCompatActivity() {
 
             // Display the alert dialog on app interface
             dialog.show()
+        }
+    }
+
+    private fun getDate(): String {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val current = LocalDateTime.now()
+            val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            return current.format(formatter)
+
+        } else {
+            var date = Date();
+            val formatter = SimpleDateFormat("dd/MM/yyyy ")
+            return formatter.format(date)
         }
     }
 }

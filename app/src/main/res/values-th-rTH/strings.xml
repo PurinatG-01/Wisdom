@@ -39,4 +39,7 @@
     <string name="complete">บรรลุเป้าหมาย</string>
     <string name="profile">บัญชีผู้ใช้</string>
     <string name="totalDonation">ยอดบริจาครวม</string>
+    <string name="donated">บริจาค</string>
+    <string name="donated_times">ครั้ง</string>
+    <string name="baht">บาท</string>
 </resources>
