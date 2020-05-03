@@ -17,9 +17,10 @@ import java.util.*
 
 
 class DonateActivity : AppCompatActivity() {
-
+    //  =============== Declare Variable ================
+    // DB
     private lateinit var database: DatabaseReference
-
+    // Event
     private lateinit var eventID: String
     private lateinit var eventName: String
     private lateinit var selectDonation: String
@@ -37,26 +38,32 @@ class DonateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donate)
+
         database = Firebase.database.reference
+        // Get Current Date
         dateD = getDate()
+
+        // ============= Call Set UI ==============
         setUI()
     }
 
-
+//  ============== Setup UI Function ===============
     private fun setUI() {
+        // Assign value to variable
         eventID = intent.getStringExtra("id")
+        // Set Realtime DB for Listening to change
         database.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {}
+            // Run everytime data change on the Firebase
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()) {
+                    // Assign value
+                    // Set Image
                     EventActivity.DownLoadImageTask(smallDisplayImageView).execute(
                         p0.child("event").child(eventID).child("image_url").getValue().toString()
                     )
-
-                    eventName =
-                        p0.child("event").child(eventID).child("event_name").getValue().toString()
+                    eventName = p0.child("event").child(eventID).child("event_name").getValue().toString()
                     eventNameView.text = eventName
-
                     dateView.text = dateD
 
                 }
@@ -65,12 +72,14 @@ class DonateActivity : AppCompatActivity() {
 
     }
 
+//  ============== Select Amount Function ==============
     fun selectAmount(view: View) {
         var tag = view.getTag().toString().toInt()
         displaySelectedDonationView.text = tag.toString()
         selectDonation = tag.toString()
     }
 
+//  ============== Submit Donation Function ===============
     fun submitDonation(view: View) {
         var userID = intent.getStringExtra("userID")
         val builder = AlertDialog.Builder(this)
@@ -82,20 +91,20 @@ class DonateActivity : AppCompatActivity() {
 
         // Set a positive button and its click listener on alert dialog
         builder.setPositiveButton((R.string.yes)) { dialog, which ->
+            // Prepare variable
             var temp1: Int = 0;
             var temp2: Int = 0;
             var c = 0;
             database.addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {}
                 override fun onDataChange(p0: DataSnapshot) {
-                    temp1 = p0.child("event").child(eventID).child("total_donation").getValue()
-                        .toString().toInt()
-                    temp2 =
-                        p0.child("user").child(userID).child("total_donation").getValue().toString()
-                            .toInt()
+                    temp1 = p0.child("event").child(eventID).child("total_donation").getValue().toString().toInt()
+                    temp2 = p0.child("user").child(userID).child("total_donation").getValue().toString().toInt()
+                    // *** Prevent the duplicate loop on saving data on Firebase ***
                     if (c == 0) {
                         var value = temp1 + selectDonation.toInt()
                         var value2 = temp2 + selectDonation.toInt()
+                        // Push child to User -> List Event Document
                         database.child("user").child(userID).child("list_event").push().setValue(
                             donation(
                                 event_id = eventID,
@@ -103,10 +112,8 @@ class DonateActivity : AppCompatActivity() {
                                 date = dateD
                             )
                         )
-                        database.child("user").child(userID).child("total_donation")
-                            .setValue(value2)
-                        database.child("event").child(eventID).child("total_donation")
-                            .setValue(value.toString())
+                        database.child("user").child(userID).child("total_donation").setValue(value2)
+                        database.child("event").child(eventID).child("total_donation").setValue(value.toString())
                     }
                     c++
                 }
@@ -129,7 +136,7 @@ class DonateActivity : AppCompatActivity() {
         dialog.show()
     }
 
-
+//  ============== Get Date Function ================
     private fun getDate(): String {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val current = LocalDateTime.now()

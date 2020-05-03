@@ -25,10 +25,12 @@ import java.net.URL
 
 class EventActivity : AppCompatActivity() {
 
+    //  =============== Declare Variable ================
+    // DB
     private lateinit var database: DatabaseReference
-
+    // User
     private lateinit var userID: String
-
+    // Event
     private lateinit var eventID: String;
     private lateinit var eventName: String;
     private lateinit var eventDescription: String;
@@ -39,35 +41,43 @@ class EventActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
+
         database = Firebase.database.reference
 
+        // ============= Call Set UI ==============
         setUI()
 
 
     }
 
+    //  ======================= Setup UI Function ==========================
     private fun setUI(){
+        // Assign value to variable
         eventID = intent.getStringExtra("id")
         userID = intent.getStringExtra("userID")
+
+        //       Set Realtime DB for Listening to change
         database.addValueEventListener(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {}
+            // Run everytime data change on the Firebase
             override fun onDataChange(p0: DataSnapshot) {
+
+                // Assign value from DB
                 eventName = p0.child("event").child(eventID).child("event_name").getValue().toString()
                 eventNameView.text = eventName
                 eventDescription = p0.child("event").child(eventID).child("description").getValue().toString()
-//                if(eventDescription.length >= 110){
-//                    eventDescriptionView.text = eventDescription.substring(0,110) + "..."
-//                }else {
-                    eventDescriptionView.text = eventDescription
-//                }
+                eventDescriptionView.text = eventDescription
                 currentDonation = p0.child("event").child(eventID).child("total_donation").getValue().toString()
                 currentDonationView.text = currentDonation
                 goalDonation = p0.child("event").child(eventID).child("goal_donation").getValue().toString()
                 goalDonationView.text = goalDonation
                 progressBarView.progress = ((currentDonation.toFloat()/ goalDonation.toFloat())*100.00).toInt()
+
+                // Lock Donate button if reach the goal donation
                 if(goalDonation.toInt() <= currentDonation.toInt()) {
                     donateButtonView.text = getString(R.string.complete)
                 }
+                // Set Image View
                 DownLoadImageTask(eventImageView)
                     .execute(p0.child("event").child(eventID).child("image_url").getValue().toString())
 
@@ -77,6 +87,7 @@ class EventActivity : AppCompatActivity() {
 
     }
 
+    //  ======================= Intent Navigate Function ==========================
     fun goDonate(view: View){
         val intent = Intent(this, DonateActivity::class.java)
         val id = view.id
@@ -89,7 +100,7 @@ class EventActivity : AppCompatActivity() {
 
     }
 
-//  ============================== Image Setting Class ==============================
+//  **** ============================== Image Setting Class ============================== ****
     public class DownLoadImageTask(internal val imageView: ImageView) : AsyncTask<String, Void, Bitmap?>() {
         override fun doInBackground(vararg urls: String): Bitmap? {
             val urlOfImage = urls[0]

@@ -63,12 +63,13 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-//  ======================= Set Up UI ==========================
-    // =================== Main Setup ====================
+//  ======================= Set Up UI Function ==========================
+    // =================== Main Setup Function ====================
     private fun setUI() {
-
+//       Set Realtime DB for Listening to change
         database.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {}
+            // Run everytime data change on the Firebase
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()) {
 
@@ -112,7 +113,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    // =================== Nav Setup ====================
+    // =================== Nav Setup Function ====================
     private fun navUI(){
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav)
