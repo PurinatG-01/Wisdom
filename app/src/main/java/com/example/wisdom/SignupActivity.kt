@@ -1,9 +1,7 @@
 package com.example.wisdom
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -14,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_signup.*
 
 class SignupActivity : AppCompatActivity() {
 
-
+    //   ======================  Declare variable  ======================
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
 
@@ -27,12 +25,14 @@ class SignupActivity : AppCompatActivity() {
                     var total_donation: Int = 0
     )
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+
         database = Firebase.database.reference
         auth = FirebaseAuth.getInstance()
-
         signupButton.setOnClickListener(){
             signUpUser()
         }
@@ -40,7 +40,11 @@ class SignupActivity : AppCompatActivity() {
 
     }
 
+    //   ======================  Signup Function  ======================
+
     fun signUpUser(){
+
+        // ==================  Check Validity of information ==================
         if(emailText.text.toString().isEmpty()){
             emailText.error = "Please enter email"
             emailText.requestFocus()
@@ -83,8 +87,12 @@ class SignupActivity : AppCompatActivity() {
             return
         }
 
+        // ================== Send Data to Verify in Firebase =====================
+
         auth.createUserWithEmailAndPassword(emailText.text.toString(),passwordText.text.toString()).addOnCompleteListener(this){task ->
             if(task.isSuccessful){
+
+                // ================= Push Child to the User Document in Firebase =================
                 var firebaseDatabase = FirebaseDatabase.getInstance()
                 var user = User( email = emailText.text.toString(), name = nameSignup.text.toString(), surname = surnameSignup.text.toString() )
                 database.child("user").push().setValue(user)

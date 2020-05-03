@@ -32,11 +32,14 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var database: DatabaseReference
+//  =============== Declare Variable ================
 
+    // DB
+    private lateinit var database: DatabaseReference
+    // User
     private lateinit var userEmail: String
     private lateinit var userID: String
-
+    // Nav
     lateinit var drawerLayout: DrawerLayout
     lateinit var navView: NavigationView
     lateinit var toolbar: androidx.appcompat.widget.Toolbar
@@ -47,47 +50,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         database = Firebase.database.reference
-        // Write a message to the database
         userEmail = intent.getStringExtra("email")
 
 
-
+        // =========== Call Set UI =============
         setUI()
-        drawerLayout = findViewById(R.id.drawer_layout)
-        navView = findViewById(R.id.nav)
-        toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        navUI()
 
-            drawerLayout.addDrawerListener(toggle)
-            toggle.syncState()
-            toggle.isDrawerIndicatorEnabled = true
-            supportActionBar?.setHomeButtonEnabled(true)
-            supportActionBar?.setDisplayShowTitleEnabled(false);
 
 
 
     }
 
 
-    fun onClickLogout(item: MenuItem){
-        this.finish()
-    }
-
-    fun goProfile(item: MenuItem){
-
-        val intent = Intent(this, ProfileActivity::class.java)
-        intent.putExtra("userID",userID)
-        startActivity(intent)
-
-    }
-
-    fun goHistory(item: MenuItem){
-        val intent = Intent(this, HistoryActivity::class.java)
-        intent.putExtra("userID",userID)
-        startActivity(intent)
-    }
-
+//  ======================= Set Up UI ==========================
+    // =================== Main Setup ====================
     private fun setUI() {
 
         database.addValueEventListener(object : ValueEventListener {
@@ -135,6 +112,37 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    // =================== Nav Setup ====================
+    private fun navUI(){
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navView = findViewById(R.id.nav)
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        toggle.isDrawerIndicatorEnabled = true
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false);
+
+    }
+
+    //   =============== Intent Navigate Function  ===================
+    fun onClickLogout(item: MenuItem){
+        this.finish()
+    }
+
+    fun goProfile(item: MenuItem){
+        val intent = Intent(this, ProfileActivity::class.java)
+        intent.putExtra("userID",userID)
+        startActivity(intent)
+    }
+
+    fun goHistory(item: MenuItem){
+        val intent = Intent(this, HistoryActivity::class.java)
+        intent.putExtra("userID",userID)
+        startActivity(intent)
+    }
 
     fun goEvent(view: View) {
 
@@ -186,8 +194,5 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
-    fun goProfile(view: View) {}
-
 
 }

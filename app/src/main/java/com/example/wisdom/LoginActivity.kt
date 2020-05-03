@@ -14,30 +14,29 @@ import kotlinx.android.synthetic.main.activity_login.*
 import java.util.*
 
 class LoginActivity : AppCompatActivity() {
+
+//   ======================  Declare variable  ======================
     private lateinit var auth: FirebaseAuth
     lateinit var mBtn : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        // ============== Load language ===============
         loadLocate()
 
-        // ...
-        // Initialize Firebase Auth
+        // ============== Initialize Firebase Auth ===============
         auth = FirebaseAuth.getInstance()
 
-        mBtn = findViewById(R.id.mChangeLang)
 
-        mBtn.setOnClickListener {
 
-            showChangeLang()
-        }
     }
 
-    private fun showChangeLang() {
+
+    //   ======================  Change Language Function  =========================
+    fun showChangeLang(view: View) {
 
         val listItmes = arrayOf("Thai","English")
-
         val mBuilder = AlertDialog.Builder(this@LoginActivity)
         mBuilder.setTitle("Choose Language")
         mBuilder.setSingleChoiceItems(listItmes, -1) { dialog, which ->
@@ -57,6 +56,9 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
+
+
+    //   ======================  Set Language Function  ======================
     private fun setLocate(Lang: String?) {
 
         val locale = Locale(Lang)
@@ -73,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
         editor.apply()
     }
 
+    //   ======================  Load Language Function  ======================
     private fun loadLocate() {
         val sharedPreferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE)
         val language = sharedPreferences.getString("My_Lang", "")
@@ -81,19 +84,24 @@ class LoginActivity : AppCompatActivity() {
 
 
 
+
+//   ======================  Intent Navigate Function  ======================
+
+
+    //   ======================  Go Signup Activity  ======================
     fun goSignup(view : View){
         val intent = Intent(this, SignupActivity::class.java)
         startActivity(intent)
     }
 
+    //   ======================  Go Login Activity  ======================
     fun goLogin(view : View){
-
         val email = emailText.text.toString()
         val password = passwordText.text.toString()
         errorText.text = ""
         print("Login Method")
 
-//        Hold for authentication on firebase system
+        // ============== Hold for authentication on firebase system ==============
 
         if(email != "" && password != ""){
             auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){
@@ -103,7 +111,6 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(this@LoginActivity,MainActivity::class.java)
                     intent.putExtra("email",email)
                     startActivity(intent)
-                    finish()
                 }else{
                     errorText.text = "Incorrect email or password"
                 }
@@ -112,24 +119,6 @@ class LoginActivity : AppCompatActivity() {
 
 
     }
-
-
-//
-//    fun changeLanguage(view:View) {
-//        val mainAct = Intent(this, LoginActivity::class.java)
-//        var chg = ""
-//        val lang = ConfigurationCompat.getLocales(resources.configuration)[0]
-//        if (lang.toString() =="en") {
-//            chg= "th"
-//        } else if (lang.toString()=="th"){
-//            chg = "en"
-//        } else {
-//            chg = ""
-//        }
-//        setLocate(chg)
-//        startActivity(mainAct)
-//    }
-
 
 
 
